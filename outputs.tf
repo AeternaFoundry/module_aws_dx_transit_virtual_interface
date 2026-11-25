@@ -26,6 +26,10 @@ output "dx_transit_virtual_interfaces_bgp_asn" {
   description = "Map of bgp_asn values across all dx_transit_virtual_interfaces, keyed the same as var.dx_transit_virtual_interfaces"
   value       = { for k, v in aws_dx_transit_virtual_interface.dx_transit_virtual_interfaces : k => v.bgp_asn if v.bgp_asn != null }
 }
+output "dx_transit_virtual_interfaces_bgp_asn_long" {
+  description = "Map of bgp_asn_long values across all dx_transit_virtual_interfaces, keyed the same as var.dx_transit_virtual_interfaces"
+  value       = { for k, v in aws_dx_transit_virtual_interface.dx_transit_virtual_interfaces : k => v.bgp_asn_long if v.bgp_asn_long != null && length(v.bgp_asn_long) > 0 }
+}
 output "dx_transit_virtual_interfaces_bgp_auth_key" {
   description = "Map of bgp_auth_key values across all dx_transit_virtual_interfaces, keyed the same as var.dx_transit_virtual_interfaces"
   value       = { for k, v in aws_dx_transit_virtual_interface.dx_transit_virtual_interfaces : k => v.bgp_auth_key if v.bgp_auth_key != null && length(v.bgp_auth_key) > 0 }
